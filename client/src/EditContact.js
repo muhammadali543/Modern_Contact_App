@@ -22,7 +22,7 @@ export default function EditContact() {
     }, [id]);
 
     const getContact = async (id) => {
-        const { data } = await axios.get(`/users/${id}`);
+        const { data } = await axios.get(`http://localhost:8080/api/${id}`);
         setUser(data);
     }
 
@@ -30,7 +30,7 @@ export default function EditContact() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await axios.put(`/users/${id}`, user);
+        await axios.put(`http://localhost:8080/api/${id}`, user);
         history.push('/');
     }    
 

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom';
-import shortid from 'shortid';
 import Heading from './Heading';
 import axios from 'axios'
 import { BsArrowLeft } from 'react-icons/bs';
@@ -22,12 +21,11 @@ export default function AddContact() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const user = {
-            id: shortid.generate(),
             name: name,
             phone: phone,
             email: email
         }
-        await axios.post('/users', user);
+        await axios.post('http://localhost:8080/api/save', user);
         history.push(`/`);
     }
 
